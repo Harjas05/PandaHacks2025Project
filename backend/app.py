@@ -6,10 +6,13 @@ from dotenv import load_dotenv
 load_dotenv()
 API_KEY = os.getenv("HF_TOKEN")
 
+
+
+
 #get the user input from the front-end 
 #store it and then pass it off to the llm
 # sanitize?
-#Construct prompt for LLM
+# Construct prompt for LLM
 # Call Hugging Face model using Inference API
 # Return structured response to frontend
 
