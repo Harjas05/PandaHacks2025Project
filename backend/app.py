@@ -2,12 +2,18 @@ import streamlit as st
 import os 
 from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
+# from backend import hf
 
 # load apikey safely from.env file
 load_dotenv()
 API_KEY = os.getenv("HF_TOKEN")
 system_prompt = "You are a helpful, empathetic healthcare assistant. You DO NOT diagnose or presribe. Instead, you explain possible causes based on symptoms, suggest when to see a doctor, and give general advice."
 
+st.title("AI Doc Assistant")
+
+name = st.text_input("Hi, What's your name?")
+
+user_input = st.text_area(f"Hi {name}!! Describe your symptoms please in detail")
 
 
 client = InferenceClient(
@@ -29,7 +35,12 @@ completion = client.chat.completions.create(
     ],
 )
 
-response = completion.choices[0].message
+# response = completion.choices[0].message
+
+if st.button("Enter") and user_input :
+    response = completion.choices[0].message
+    st.write(response)
+
 
 
 
