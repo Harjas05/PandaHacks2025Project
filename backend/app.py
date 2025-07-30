@@ -38,9 +38,10 @@ completion = client.chat.completions.create(
 # response = completion.choices[0].message
 
 if st.button("Enter") and user_input :
-    response = completion.choices[0].message
-    st.write(response)
+    response = completion.choices[0].message.content
+    st.text_area(label ="",value=response, height =100) # need to find a way to make it not scroll
 
+    #add in continuous chat feature
 
 
 
